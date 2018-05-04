@@ -1,0 +1,21 @@
+{% for comment in comments|sort(attribute='date') %}
+    <div class="row mb-2">
+        <div class="col-sm-1 mr-2">
+            <img src="{{ comment.avatar }}">
+        </div>
+        <div class="col-sm-4">
+            {% if comment.website %}
+                <h5 style="font-size: larger;"><a href="{{ comment.website }}">{{ comment.name }}</a></h5>
+            {% else %}
+                <h5>{{ comment.name }}</h5>
+            {% endif %}
+            <time datetime="{{ comment.date|datetimeformat('%Y-%m-%d %H:%M:%S') }}">{{ comment.date|datetimeformat }}</time></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-sm-1">&nbsp;</div>
+        <div class="col-sm-10 ml-3">
+            {{ comment.message |safe }}
+        </div>
+    </div>
+{% endfor %}

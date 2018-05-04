@@ -13,7 +13,7 @@ setup(
     test_suite='testsuite.testsuite',
     entry_points={
         'console_scripts':[
-            'render_comments = render_comment.render_comments:main'
+            'render_comments = render_comments.render_comments:main'
         ],
     },
     install_requires=[

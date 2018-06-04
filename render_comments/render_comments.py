@@ -19,6 +19,10 @@ for c in commentsYML:
         if not data['url'] in comments:
             comments[data['url']] = []
 
+        if 'website' in data:
+            if not data['website'].startswith('http'):
+                data['website'] = 'http://' + data['website']
+                
         comments[data['url']].append({
             'name': data['name'],
             'website': data['website'] if 'website' in data else None,
@@ -39,6 +43,7 @@ def datetimeformat(value, format='%d-%m-%Y at %H:%M'):
     return value.strftime(format)
 
 env.filters['datetimeformat'] = datetimeformat
+
 
 def main():
     for entry in comments:
